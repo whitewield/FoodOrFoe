@@ -22,7 +22,11 @@ public class CS_CameraControl : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		CameraSelect();
+		//CameraSelect();
+		if(Input.GetButtonDown("Fire2"))
+		{
+			SetTargetPos(originalPosition);
+		}
 		CameraMove(targetPos);
 	}
 
@@ -42,15 +46,22 @@ public class CS_CameraControl : MonoBehaviour {
 			ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 			if(Physics.Raycast(ray.origin,ray.direction, out rayhit, 300.0f,rayCastLayer))
 			{
-				targetPos = new Vector3(rayhit.collider.transform.position.x, rayhit.collider.transform.position.y, closeDistance);
-				Debug.Log("Hit");
+				if(rayhit.collider.gameObject.GetComponent<CS_ZoomIntoArea>())
+				{
+					Debug.Log("Hit UI");
+				}
+				else
+				{
+					Debug.Log("Hit something else");
+				}
 			}
 		}
+	}
 
-		if(Input.GetButtonDown("Fire2"))
-		{
-			targetPos = originalPosition;
-		}
+	public void SetTargetPos(Vector3 m_position)
+	{
+		targetPos = m_position;
+		targetPos = new Vector3(targetPos.x,targetPos.y,closeDistance);
 	}
 
 	public float getDistanceRatio()
