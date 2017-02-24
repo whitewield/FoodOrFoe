@@ -3,8 +3,30 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CS_Player : MonoBehaviour {
+
+	private static CS_Player instance = null;
+
+	//========================================================================
+	public static CS_Player Instance {
+		get { 
+			return instance;
+		}
+	}
+
+	void Awake () {
+		if (instance != null && instance != this) {
+			Destroy(this.gameObject);
+		} else {
+			instance = this;
+		}
+//		DontDestroyOnLoad(this.gameObject);
+	}
+	//========================================================================
+
+
 	[SerializeField] float mySpeed = 10;
 	[SerializeField] float myDeltaDistance = 1;
+	[SerializeField] float myVisionDistance = 20;
 
 	private Vector3 myTargetPosition;
 	private bool isMoving = false;
@@ -28,7 +50,8 @@ public class CS_Player : MonoBehaviour {
 		} else if (Input.GetMouseButtonDown (0)) {
 			Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
 			RaycastHit hit;
-			Physics.Raycast (ray, out hit, 100.0F);
+			int t_layerMask = (int) Mathf.Pow (2, 8);
+			if (Physics.Raycast (ray, out hit, myVisionDistance, t_layerMask))
 			if (hit.collider.tag == "Food") {
 				myTargetPosition = hit.transform.position;
 				isMoving = true;
