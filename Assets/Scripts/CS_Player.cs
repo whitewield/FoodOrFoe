@@ -114,14 +114,16 @@ public class CS_Player : MonoBehaviour {
 
 
 	public void EatFoe () {
-		Instantiate (myEffectFoe, this.transform.position, Quaternion.identity);
+		GameObject t_effect = Instantiate (myEffectFoe, this.transform.position, Quaternion.identity) as GameObject;
+		t_effect.transform.SetParent (this.transform);
 		myEnergyCurrent -= myEnergyLoseFromFoe;
 		CheckIsDead ();
 		ShowEnergy ();
 	}
 
 	public void EatFood () {
-		Instantiate (myEffectFood, this.transform.position, Quaternion.identity);
+		GameObject t_effect = Instantiate (myEffectFood, this.transform.position, Quaternion.identity) as GameObject;
+		t_effect.transform.SetParent (this.transform);
 		myEnergyCurrent += myEnergyGetFromFood;
 		if (myEnergyCurrent > myEnergyMax) {
 			myEnergyCurrent = myEnergyMax;

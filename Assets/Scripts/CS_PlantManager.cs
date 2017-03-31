@@ -32,7 +32,7 @@ public class CS_PlantManager : MonoBehaviour {
 		for (int i = 0; i < myPlantNumber; i++) {
 			GameObject t_plant = Instantiate (
 				myPlantPrefabs [Random.Range (0, myPlantPrefabs.Length)], 
-				CreateRandomPosition (0, myPlantPosition.z),
+				CreateRandomPosition (0, myPlantPosition.z * 2),
 				Quaternion.identity
 			);
 			t_plant.transform.SetParent (this.transform);
