@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class CS_Food : MonoBehaviour {
 
+	enum Type : byte {
+		Food,
+		Foe
+	}
+
+	[SerializeField] Type myType = Type.Food;
+
 //	// Use this for initialization
 //	void Start () {
 //		
@@ -15,8 +22,12 @@ public class CS_Food : MonoBehaviour {
 //	}
 //
 	void OnTriggerEnter (Collider g_collider) {
-		if (g_collider.tag == "Player") {
-			Destroy (this.gameObject);
+		CS_FoodManager.Instance.CreateFoe ();
+		CS_FoodManager.Instance.RemoveFo (this.gameObject);
+		if (myType == Type.Food) {
+			CS_Player.Instance.EatFood ();
+		} else {
+			CS_Player.Instance.EatFoe ();
 		}
 	}
 }
