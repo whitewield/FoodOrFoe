@@ -93,3 +93,22 @@ public abstract class Task {
         return task;
     }
 }
+
+public class wait_Task: Task{
+    private float timer = 0.0f;
+    private float WaitTime = 1.0f;
+    public wait_Task(float m_waitTime)
+    {
+        WaitTime = m_waitTime;
+    }
+    protected override void Init()
+    {
+        timer = 0.0f;
+    }
+    internal override void TUpdate()
+    {
+        timer += Time.deltaTime;
+        if(timer >= WaitTime)
+            SetStatus(TaskStatus.Success);
+    }
+}

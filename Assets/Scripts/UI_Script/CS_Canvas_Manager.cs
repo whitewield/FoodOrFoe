@@ -50,9 +50,9 @@ public class CS_Canvas_Manager : MonoBehaviour {
 	}
 	private void SetPosition(float XPos_Left, float XPos_Mid, float XPos_Right)
 	{
-		UI_MoveToPos_List[0] = new Vector3(XPos_Left, 300, 0);
-		UI_MoveToPos_List[1] = new Vector3(XPos_Mid, 300, 0);
-		UI_MoveToPos_List[2] = new Vector3(XPos_Right, 300, 0);
+		UI_MoveToPos_List[0] = new Vector3(XPos_Left, 0, 0);
+		UI_MoveToPos_List[1] = new Vector3(XPos_Mid, 0, 0);
+		UI_MoveToPos_List[2] = new Vector3(XPos_Right, 0, 0);
 	}
 	private void TriggerMoveTask()
 	{
@@ -69,4 +69,15 @@ public class CS_Canvas_Manager : MonoBehaviour {
 	{
 		PanelManager.TurnOffAllButton();
 	}
+	public void OnAnimalSelect()
+	{
+		AnimalSelect_Event tempEvent = new AnimalSelect_Event();
+		EventManager.Instance.FireEvent(tempEvent);
+	}
+	public void OnBackClick()
+	{
+		BackBottun_Event tempEvent = new BackBottun_Event();
+		EventManager.Instance.FireEvent(tempEvent);
+	}
+	
 }

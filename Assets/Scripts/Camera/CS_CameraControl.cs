@@ -7,7 +7,7 @@ public class CS_CameraControl : MonoBehaviour {
 	public Texture2D mouseTex;
 	public LayerMask rayCastLayer;
 	public float followSpeed;
-	public float closeDistance;
+	[SerializeField] float closeDistance;
 
 	private Ray ray;
 	private RaycastHit rayhit;
@@ -45,7 +45,7 @@ public class CS_CameraControl : MonoBehaviour {
 	}
 	public void BackToOrigin()
 	{
-		SetTargetPos(originalPosition);
+		targetPos = originalPosition;
 	}
 	//Get the Distance Ration between (Camera to Target) and Camera Start Point to Target
 	public float getDistanceRatio()
