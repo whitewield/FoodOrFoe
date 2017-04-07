@@ -27,6 +27,7 @@ public class CS_PlantManager : MonoBehaviour {
 	[SerializeField] int myPlantNumber = 100;
 	[SerializeField] Vector3 myPlantPosition;
 	private List<GameObject> myPlants = new List<GameObject> ();
+	[SerializeField] float myPlantDistanceMin = 4;
 	// Use this for initialization
 	void Start () {
 		for (int i = 0; i < myPlantNumber; i++) {
@@ -56,6 +57,33 @@ public class CS_PlantManager : MonoBehaviour {
 	}
 
 	private Vector3 CreateRandomPosition (float g_zStart, float g_zRange) {
+
+		Vector3 t_position;
+
+		for (int i = 0; i < 100; i++) {
+			t_position = new Vector3 (
+				Random.Range (-myPlantPosition.x + CS_Player.Instance.transform.position.x, myPlantPosition.x + CS_Player.Instance.transform.position.x),
+				myPlantPosition.y, 
+				Random.Range (g_zStart, g_zRange + g_zStart) + CS_Player.Instance.transform.position.z
+			);
+			 
+			bool t_tooClose = false;
+
+			for (int j = 0; j < myPlants.Count; j++) {
+				if ((myPlants [j].transform.position - t_position).sqrMagnitude < myPlantDistanceMin) {
+					t_tooClose = true;
+					break;
+				}
+			}
+
+			if (t_tooClose == false) {
+//				Debug.Log ("Move the corals for " + i.ToString () + " times.");
+				return t_position;
+			}
+		}
+
+		Debug.LogError ("Can't find a nice position for corals!");
+
 		return new Vector3 (
 			Random.Range (-myPlantPosition.x + CS_Player.Instance.transform.position.x, myPlantPosition.x + CS_Player.Instance.transform.position.x),
 			myPlantPosition.y, 
