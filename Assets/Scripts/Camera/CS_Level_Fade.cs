@@ -1,12 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class CS_Level_Fade : MonoBehaviour {
 
 	public SpriteRenderer map_Detail;
 	public SpriteRenderer map_Rough;
-
+	public SpriteRenderer title_Screen;
 	private SpriteRenderer currentMap;
 	// Use this for initialization
 	void Start () {
@@ -21,5 +19,6 @@ public class CS_Level_Fade : MonoBehaviour {
 		alpha = GetComponent<CS_CameraControl>().getDistanceRatio();
 		map_Detail.color = new Color(1,1,1,1-alpha);
 		map_Rough.color = new Color(1,1,1,alpha);
+		title_Screen.color = new Color(1,1,1,1-alpha);
 	}
 }

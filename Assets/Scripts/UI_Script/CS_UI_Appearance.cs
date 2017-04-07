@@ -7,6 +7,7 @@ using EasingFunc;
 public class CS_UI_Appearance : MonoBehaviour {
 	[SerializeField] Color endColor;
 	[SerializeField] Color originalColor;
+	[SerializeField] float UI_Appear_Wait_Time;
 	protected Image imageComponent;
 	protected Text textComponent;
 	protected Task_Manager taskManager;
@@ -39,7 +40,7 @@ public class CS_UI_Appearance : MonoBehaviour {
 	//When selected one Animal, Do this
 	public void Appear_In(Event e)
 	{
-		wait_Task wait = new wait_Task(0.2f);
+		wait_Task wait = new wait_Task(UI_Appear_Wait_Time);
 		if(GetComponent<Image>())
 		{
 			colorTask_Image.ResetColor(endColor);

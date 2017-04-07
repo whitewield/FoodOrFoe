@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine.UI;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class CS_Canvas_Manager : MonoBehaviour {
@@ -25,6 +23,7 @@ public class CS_Canvas_Manager : MonoBehaviour {
 		PanelManager.SetCharacterImage(images[0]);
 		PanelManager.SetRealImage(images[0]);
 		PanelManager.SetText("Left");
+		PanelManager.SetLevel(0);
 		TriggerMoveTask();
 	}
 	public void TriggerUIMove_Middle()
@@ -33,6 +32,7 @@ public class CS_Canvas_Manager : MonoBehaviour {
 		PanelManager.SetCharacterImage(images[1]);
 		PanelManager.SetRealImage(images[1]);
 		PanelManager.SetText("Middle");
+		PanelManager.SetLevel(1);
 		TriggerMoveTask();
 	}	
 	public void TriggerUIMove_Right()
@@ -41,6 +41,7 @@ public class CS_Canvas_Manager : MonoBehaviour {
 		PanelManager.SetCharacterImage(images[2]);
 		PanelManager.SetRealImage(images[2]);
 		PanelManager.SetText("Right");
+		PanelManager.SetLevel(2);
 		TriggerMoveTask();
 	}
 	public void TriggerUIMove_Back()

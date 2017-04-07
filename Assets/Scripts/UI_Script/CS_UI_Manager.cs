@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class CS_UI_Manager : MonoBehaviour {
 	private Task_Manager taskManager = new Task_Manager();
