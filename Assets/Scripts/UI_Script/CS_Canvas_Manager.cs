@@ -23,7 +23,7 @@ public class CS_Canvas_Manager : MonoBehaviour {
 		PanelManager.SetCharacterImage(images[0]);
 		PanelManager.SetRealImage(images[0]);
 		PanelManager.SetText("Left");
-		PanelManager.SetLevel(0);
+		PanelManager.SetLevel(1);
 		TriggerMoveTask();
 	}
 	public void TriggerUIMove_Middle()
@@ -41,7 +41,7 @@ public class CS_Canvas_Manager : MonoBehaviour {
 		PanelManager.SetCharacterImage(images[2]);
 		PanelManager.SetRealImage(images[2]);
 		PanelManager.SetText("Right");
-		PanelManager.SetLevel(2);
+		PanelManager.SetLevel(1);
 		TriggerMoveTask();
 	}
 	public void TriggerUIMove_Back()

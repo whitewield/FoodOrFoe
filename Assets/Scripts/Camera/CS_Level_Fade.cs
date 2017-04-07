@@ -17,8 +17,8 @@ public class CS_Level_Fade : MonoBehaviour {
 		float alpha = 0;
 
 		alpha = GetComponent<CS_CameraControl>().getDistanceRatio();
-		map_Detail.color = new Color(1,1,1,1-alpha);
-		map_Rough.color = new Color(1,1,1,alpha);
-		title_Screen.color = new Color(1,1,1,1-alpha);
+		//map_Detail.color = new Color(1,1,1,1-alpha);
+		//map_Rough.color = new Color(1,1,1,alpha);
+		title_Screen.color = new Color(1,1,1,alpha);
 	}
 }
