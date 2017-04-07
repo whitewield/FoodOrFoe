@@ -15,7 +15,7 @@ public class CS_CameraControl : MonoBehaviour {
 	private Vector3 targetPos;
 	// Use this for initialization
 	void Start () {
-		Cursor.SetCursor(mouseTex, Vector2.one * mouseTex.width/2, CursorMode.Auto);
+		//Cursor.SetCursor(mouseTex, Vector2.one * mouseTex.width/2, CursorMode.Auto);
 		originalPosition = transform.position;
 		targetPos = originalPosition;
 	}
