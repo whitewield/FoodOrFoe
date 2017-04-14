@@ -46,6 +46,8 @@ public class CS_Player : MonoBehaviour {
 	[SerializeField] float myAgePerSecond = 0.5f;
 	private float myAge = 0;
 	[SerializeField] UnityEngine.UI.Text myAgeDisplay;
+	private int myFood = 0;
+	private int myFoe = 0;
 
 	[SerializeField] GameObject myEffectFood;
 	[SerializeField] GameObject myEffectFoe;
@@ -119,6 +121,8 @@ public class CS_Player : MonoBehaviour {
 		myEnergyCurrent -= myEnergyLoseFromFoe;
 		CheckIsDead ();
 		ShowEnergy ();
+
+		myFoe++;
 	}
 
 	public void EatFood () {
@@ -129,6 +133,8 @@ public class CS_Player : MonoBehaviour {
 			myEnergyCurrent = myEnergyMax;
 		}
 		ShowEnergy ();
+
+		myFood++;
 	}
 
 	public void ShowEnergy () {
@@ -143,6 +149,12 @@ public class CS_Player : MonoBehaviour {
 		if (myEnergyCurrent < 0) {
 			myEnergyCurrent = 0;
 			isDead = true;
+
+			CS_UI_Play.Instance.ShowEnd ();
+			CS_UI_Play.Instance.myTextAge.text = myAge.ToString ("#");
+			CS_UI_Play.Instance.myTextFoe.text = myFoe.ToString ("#");
+			CS_UI_Play.Instance.myTextFood.text = myFood.ToString ("#");
+			CS_UI_Play.Instance.myTextAccuracy.text = ((float)myFood / (myFoe + myFood) * 100).ToString ("#") + "%";
 		}
 	}
 
