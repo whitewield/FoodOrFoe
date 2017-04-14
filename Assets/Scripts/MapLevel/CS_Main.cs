@@ -10,7 +10,7 @@ public class CS_Main : MonoBehaviour {
 		PlayMenu
 	}
 	[SerializeField] bool ifPlay = false;
-	[SerializeField] SpriteRenderer menuSprite;
+	[SerializeField] Image menuSprite;
 	[SerializeField] Button playButton;
 	[SerializeField] Canvas animalCanvas;
 	// Update is called once per frame
