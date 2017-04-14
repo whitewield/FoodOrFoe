@@ -20,6 +20,7 @@ public class CS_Main : MonoBehaviour {
 				menuSprite.color += new Color(0,0,0,0.1f);
 			}
 			else{
+				EventManager.Instance.ClearList();
 				playButton.enabled = true;
 				animalCanvas.gameObject.SetActive (false);
 			}

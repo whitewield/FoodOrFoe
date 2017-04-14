@@ -15,7 +15,7 @@ public class CS_UI_Appearance : MonoBehaviour {
 	protected Image_ColorChangingTask colorTask_Image;
 
 	// Use this for initialization
-	protected virtual void Start () {
+	void Start () {
 		if(GetComponent<Image>())
 		{
 			imageComponent = GetComponent<Image>();
@@ -33,7 +33,7 @@ public class CS_UI_Appearance : MonoBehaviour {
 		taskManager = new Task_Manager();
 	}
 	// Update is called once per frame
-	protected virtual void Update () {
+	void Update () {
 		taskManager.Update();
 	}
 
@@ -41,7 +41,8 @@ public class CS_UI_Appearance : MonoBehaviour {
 	public void Appear_In(Event e)
 	{
 		wait_Task wait = new wait_Task(UI_Appear_Wait_Time);
-		if(GetComponent<Image>())
+		Debug.Log("Name:" + gameObject.name);
+		if(gameObject.name != "Text")
 		{
 			colorTask_Image.ResetColor(endColor);
 			if(colorTask_Image.ifDetached)
@@ -50,7 +51,7 @@ public class CS_UI_Appearance : MonoBehaviour {
 				taskManager.AddTask(wait);
 			}
 		}
-		if(GetComponent<Text>())
+		if(gameObject.name == "Text")
 		{
 			colorTask_Text.ResetColor(endColor);
 			if(colorTask_Text.ifDetached)

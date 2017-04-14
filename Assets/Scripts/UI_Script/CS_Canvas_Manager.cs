@@ -15,7 +15,7 @@ public class CS_Canvas_Manager : MonoBehaviour {
 		Vector3.zero
 	};
 
-	void Start()
+	void Awake()
 	{
 		PanelManager = GetComponentInChildren<CS_UI_PanelManager>();
 	}

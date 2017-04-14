@@ -46,7 +46,6 @@ public class EventManager {
 			}
 		}
 	}
-
 	public void FireEvent(Event e)
 	{
 		Type type = e.GetType();
@@ -55,5 +54,8 @@ public class EventManager {
 		{
 			handlers(e);
 		}
+	}
+	public void ClearList(){
+		RegisteredHandlers.Clear();
 	}
 }
