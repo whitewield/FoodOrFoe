@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: c3dcf3e48e2f6e14d9ddb22c0c9ea9cf
+timeCreated: 1492128664
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: DJB Dear Mr Claus
+  fontNames:
+  - DJB Dear Mr Claus
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -23,7 +23,8 @@ public class CS_UI_PanelManager : MonoBehaviour {
 		}
 	}
 	public void SetCharacterImage(Sprite characterImage){Images[0].sprite = characterImage;}
-	public void SetRealImage(Sprite realImage){Images[1].sprite = realImage;}
+	// public void SetRealImage(Sprite realImage){Images[1].sprite = realImage;}
+	public void SetButtonImage(Sprite buttonImage){Images[1].sprite = buttonImage;}
 	public void SetText(string text){Texts[0].text = text;}
 	public void SetLevel(int m_levelIndex){NextLoadScene = m_levelIndex;}
 	public void SetLevel(string m_levelName){NextLoadScene_Name = m_levelName;}

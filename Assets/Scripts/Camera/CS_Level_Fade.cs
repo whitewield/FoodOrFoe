@@ -8,8 +8,8 @@ public class CS_Level_Fade : MonoBehaviour {
 	private SpriteRenderer currentMap;
 	// Use this for initialization
 	void Start () {
-		map_Rough.color = Color.white;
-		map_Detail.color = new Color(1,1,1,0);
+		//map_Rough.color = Color.white;
+		//map_Detail.color = new Color(1,1,1,0);
 	}
 	
 	// Update is called once per frame

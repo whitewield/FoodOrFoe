@@ -6,6 +6,8 @@ public class CS_Canvas_Manager : MonoBehaviour {
 	public CS_UI_PanelManager PanelManager;
 	public bool ifMenu{get; private set;}
 	public Sprite[] images;
+	public Sprite[] Button_Image;
+	public string[] Text_Collection;
 	private List<Vector3> UI_MoveToPos_List = new List<Vector3>()
 	{
 		Vector3.zero,
@@ -21,8 +23,8 @@ public class CS_Canvas_Manager : MonoBehaviour {
 	{
 		SetPosition(-200, 400,600);
 		PanelManager.SetCharacterImage(images[0]);
-		PanelManager.SetRealImage(images[0]);
-		PanelManager.SetText("Left");
+		PanelManager.SetButtonImage(Button_Image[0]);
+		PanelManager.SetText(Text_Collection[0]);
 		PanelManager.SetLevel(1);
 		TriggerMoveTask();
 	}
@@ -30,8 +32,8 @@ public class CS_Canvas_Manager : MonoBehaviour {
 	{
 		SetPosition(-400, -200,400);
 		PanelManager.SetCharacterImage(images[1]);
-		PanelManager.SetRealImage(images[1]);
-		PanelManager.SetText("Middle");
+		PanelManager.SetButtonImage(Button_Image[1]);
+		PanelManager.SetText(Text_Collection[1]);
 		PanelManager.SetLevel(1);
 		TriggerMoveTask();
 	}	
@@ -39,8 +41,8 @@ public class CS_Canvas_Manager : MonoBehaviour {
 	{
 		SetPosition(-600, -400,-200);
 		PanelManager.SetCharacterImage(images[2]);
-		PanelManager.SetRealImage(images[2]);
-		PanelManager.SetText("Right");
+		PanelManager.SetButtonImage(Button_Image[2]);
+		PanelManager.SetText(Text_Collection[2]);
 		PanelManager.SetLevel(1);
 		TriggerMoveTask();
 	}
