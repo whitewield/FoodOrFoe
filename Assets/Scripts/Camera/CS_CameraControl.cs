@@ -13,6 +13,7 @@ public class CS_CameraControl : MonoBehaviour {
 	private RaycastHit rayhit;
 	private Vector3 originalPosition;
 	private Vector3 targetPos;
+	private float timer;
 	// Use this for initialization
 	void Start () {
 		//Cursor.SetCursor(mouseTex, Vector2.one * mouseTex.width/2, CursorMode.Auto);
