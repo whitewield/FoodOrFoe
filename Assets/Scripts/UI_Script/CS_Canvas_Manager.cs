@@ -21,8 +21,8 @@ public class CS_Canvas_Manager : MonoBehaviour {
 	}
 	public void TriggerUIMove_Left()
 	{
-		SetPosition(-200, 400,600);
-		PanelManager.SetCharacterImage(images[0]);
+		SetPosition(0, 400,600);
+		// PanelManager.SetCharacterImage(images[0]);
 		PanelManager.SetButtonImage(Button_Image[0]);
 		PanelManager.SetText(Text_Collection[0]);
 		PanelManager.SetLevel(1);
@@ -30,8 +30,8 @@ public class CS_Canvas_Manager : MonoBehaviour {
 	}
 	public void TriggerUIMove_Middle()
 	{
-		SetPosition(-400, -200,400);
-		PanelManager.SetCharacterImage(images[1]);
+		SetPosition(-400, 0,400);
+		// PanelManager.SetCharacterImage(images[1]);
 		PanelManager.SetButtonImage(Button_Image[1]);
 		PanelManager.SetText(Text_Collection[1]);
 		PanelManager.SetLevel(1);
@@ -39,8 +39,8 @@ public class CS_Canvas_Manager : MonoBehaviour {
 	}	
 	public void TriggerUIMove_Right()
 	{
-		SetPosition(-600, -400,-200);
-		PanelManager.SetCharacterImage(images[2]);
+		SetPosition(-600, -400,0);
+		// PanelManager.SetCharacterImage(images[2]);
 		PanelManager.SetButtonImage(Button_Image[2]);
 		PanelManager.SetText(Text_Collection[2]);
 		PanelManager.SetLevel(1);
