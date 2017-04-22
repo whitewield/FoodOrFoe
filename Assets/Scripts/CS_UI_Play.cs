@@ -25,6 +25,7 @@ public class CS_UI_Play : MonoBehaviour {
 	}
 	//========================================================================
 
+	[SerializeField] GameObject UI_Breathing;
 	[SerializeField] GameObject UI_End;
 	[SerializeField] GameObject UI_Help;
 
@@ -36,6 +37,7 @@ public class CS_UI_Play : MonoBehaviour {
 	void Start () {
 		UI_End.SetActive (false);
 		UI_Help.SetActive (false);
+		UI_Breathing.SetActive (false);
 	}
 	
 //	// Update is called once per frame
@@ -60,3 +62,4 @@ public class CS_UI_Play : MonoBehaviour {
 		SceneManager.LoadScene ("Map");
 	}
 }
+

@@ -16,18 +16,28 @@ public class CS_Food : MonoBehaviour {
 //		
 //	}
 //	
-//	// Update is called once per frame
-//	void Update () {
-//		
-//	}
-//
-	void OnTriggerEnter (Collider g_collider) {
-		CS_FoodManager.Instance.CreateFoe ();
-		CS_FoodManager.Instance.RemoveFo (this.gameObject);
-		if (myType == Type.Food) {
-			CS_Player.Instance.EatFood ();
-		} else {
-			CS_Player.Instance.EatFoe ();
+	// Update is called once per frame
+	void Update () {
+		if ((CS_Player.Instance.transform.position - this.transform.position).sqrMagnitude < CS_Player.Instance.GetMyDeltaDistance ()) {
+			CS_FoodManager.Instance.CreateFoe ();
+			CS_FoodManager.Instance.RemoveFo (this.gameObject);
+			if (myType == Type.Food) {
+				CS_Player.Instance.EatFood ();
+			} else {
+				CS_Player.Instance.EatFoe ();
+			}
 		}
 	}
+
+
+
+//	void OnTriggerEnter (Collider g_collider) {
+//		CS_FoodManager.Instance.CreateFoe ();
+//		CS_FoodManager.Instance.RemoveFo (this.gameObject);
+//		if (myType == Type.Food) {
+//			CS_Player.Instance.EatFood ();
+//		} else {
+//			CS_Player.Instance.EatFoe ();
+//		}
+//	}
 }

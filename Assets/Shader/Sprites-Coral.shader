@@ -17,7 +17,7 @@ Shader "Sprites/Coral"
 		{ 
 			"Queue"="Transparent" 
 			"IgnoreProjector"="True" 
-			"RenderType"="Transparent" 
+			"RenderType"="Coral" 
 			"PreviewType"="Plane"
 			"CanUseSpriteAtlas"="True"
 		}
@@ -25,6 +25,7 @@ Shader "Sprites/Coral"
 		Cull Off
 		Lighting Off
 		ZWrite On // Fog
+//		ZTest Always
 //		ZWrite Off
 		Blend One OneMinusSrcAlpha
 
@@ -35,7 +36,7 @@ Shader "Sprites/Coral"
 			#pragma fragment frag
 			#pragma target 2.0
 			#pragma multi_compile _ PIXELSNAP_ON
-			#pragma multi_compile _ ETC1_EXTERNAL_ALPHA
+//			#pragma multi_compile _ ETC1_EXTERNAL_ALPHA
 
 			#pragma shader_feature _EMISSION
 			#pragma multi_compile_fog // Fog

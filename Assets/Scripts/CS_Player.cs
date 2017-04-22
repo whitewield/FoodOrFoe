@@ -45,15 +45,20 @@ public class CS_Player : MonoBehaviour {
 	[SerializeField] float myAgeStart = 10;
 	[SerializeField] float myAgePerSecond = 0.5f;
 	private float myAge = 0;
-	[SerializeField] UnityEngine.UI.Text myAgeDisplay;
+//	[SerializeField] UnityEngine.UI.Text myAgeDisplay;
 	private int myFood = 0;
 	private int myFoe = 0;
 
 	[SerializeField] GameObject myEffectFood;
 	[SerializeField] GameObject myEffectFoe;
 
-
 	private bool isDead = false;
+
+	//=======
+
+	[SerializeField] float myBreathingTime = 5;
+	private float myBreathingTimer = 0;
+	private bool isBreathing = false;
 
 	// Use this for initialization
 	void Start () {
@@ -63,6 +68,9 @@ public class CS_Player : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+		if (isBreathing)
+			return;
 		
 		if (isDead)
 			return;
@@ -73,7 +81,7 @@ public class CS_Player : MonoBehaviour {
 			this.transform.position = Vector3.Lerp (
 				this.transform.position, myTargetPosition, Time.deltaTime * mySpeed * Time.deltaTime
 			);
-			if (Vector3.Distance (this.transform.position, myTargetPosition) < myDeltaDistance) {
+			if ((this.transform.position - myTargetPosition).sqrMagnitude < myDeltaDistance) {
 				isMoving = false;
 				myAnimator.SetBool ("isIdle", true);
 			}
@@ -94,6 +102,24 @@ public class CS_Player : MonoBehaviour {
 
 		UpdateEnergy ();
 		UpdateAge ();
+
+		UpdateBreathing ();
+	}
+
+	public void UpdateBreathing () {
+		if (isBreathing)
+			return;
+		
+		myBreathingTimer += Time.deltaTime; 
+		if (myBreathingTimer >= myBreathingTime) {
+			myBreathingTimer = 0;
+			isBreathing = true;
+			CS_UI_Play_Breathing.Instance.ShowQuestion ();
+		}
+	}
+
+	public void BreathingDone () {
+		isBreathing = false;
 	}
 
 	public void UpdateAge () {
@@ -101,7 +127,7 @@ public class CS_Player : MonoBehaviour {
 			return;
 
 		myAge += Time.deltaTime * myAgePerSecond;
-		ShowAge ();
+//		ShowAge ();
 	}
 
 	public void UpdateEnergy () {
@@ -141,9 +167,9 @@ public class CS_Player : MonoBehaviour {
 		myEnergyDisplay.localScale = new Vector3 (myEnergyCurrent / myEnergyMax, 1, 1);
 	}
 
-	public void ShowAge () {
-		myAgeDisplay.text = myAge.ToString ("#");
-	}
+//	public void ShowAge () {
+//		myAgeDisplay.text = myAge.ToString ("#");
+//	}
 
 	private void CheckIsDead () {
 		if (myEnergyCurrent < 0) {
@@ -156,6 +182,10 @@ public class CS_Player : MonoBehaviour {
 			CS_UI_Play.Instance.myTextFood.text = myFood.ToString ("#");
 			CS_UI_Play.Instance.myTextAccuracy.text = ((float)myFood / (myFoe + myFood) * 100).ToString ("#") + "%";
 		}
+	}
+
+	public float GetMyDeltaDistance () {
+		return myDeltaDistance;
 	}
 
 }
