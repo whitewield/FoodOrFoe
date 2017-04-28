@@ -27,6 +27,7 @@ public class CS_FoodManager : MonoBehaviour {
 	[SerializeField] GameObject[] myFoePrefabs;
 	[SerializeField] int myFoodNumber = 100;
 	[SerializeField] Vector3 myFoodPosition;
+	[SerializeField] float myFoodRotateAngle = 30;
 
 	private List<GameObject> myFos = new List<GameObject> ();
 	// Use this for initialization
@@ -35,7 +36,7 @@ public class CS_FoodManager : MonoBehaviour {
 			GameObject t_food = Instantiate (
 				                    myFoodPrefabs [Random.Range (0, myFoodPrefabs.Length)], 
 				                    CreateRandomPosition (0, myFoodPosition.z),
-				                    Quaternion.identity
+				                    Quaternion.Euler (0, 0, Random.Range (-myFoodRotateAngle, myFoodRotateAngle))
 			                    );
 
 			t_food.transform.SetParent (this.transform);
@@ -77,10 +78,10 @@ public class CS_FoodManager : MonoBehaviour {
 
 	public void CreateFoe () {
 		GameObject t_foe = Instantiate (
-			myFoePrefabs [Random.Range (0, myFoodPrefabs.Length)], 
-			CreateRandomPosition (myFoodPosition.z, myFoodPosition.z),
-			Quaternion.identity
-		);
+			                   myFoePrefabs [Random.Range (0, myFoodPrefabs.Length)], 
+			                   CreateRandomPosition (myFoodPosition.z, myFoodPosition.z),
+			                   Quaternion.Euler (0, 0, Random.Range (-myFoodRotateAngle, myFoodRotateAngle))
+		                   );
 
 		t_foe.transform.SetParent (this.transform);
 		myFos.Add (t_foe);

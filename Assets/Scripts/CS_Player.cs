@@ -39,6 +39,7 @@ public class CS_Player : MonoBehaviour {
 	[SerializeField] float myEnergyLosePerSecond = 5;
 	[SerializeField] float myEnergyLoseFromFoe = 20;
 	[SerializeField] float myEnergyGetFromFood = 10;
+	[SerializeField] float myEnergyGetFromRight = 20;
 	[SerializeField] RectTransform myEnergyDisplay;
 	private float myEnergyCurrent;
 
@@ -142,16 +143,18 @@ public class CS_Player : MonoBehaviour {
 
 
 	public void EatFoe () {
+		myFoe++;
+
 		GameObject t_effect = Instantiate (myEffectFoe, this.transform.position, Quaternion.identity) as GameObject;
 		t_effect.transform.SetParent (this.transform);
 		myEnergyCurrent -= myEnergyLoseFromFoe;
 		CheckIsDead ();
 		ShowEnergy ();
-
-		myFoe++;
 	}
 
 	public void EatFood () {
+		myFood++;
+
 		GameObject t_effect = Instantiate (myEffectFood, this.transform.position, Quaternion.identity) as GameObject;
 		t_effect.transform.SetParent (this.transform);
 		myEnergyCurrent += myEnergyGetFromFood;
@@ -159,8 +162,14 @@ public class CS_Player : MonoBehaviour {
 			myEnergyCurrent = myEnergyMax;
 		}
 		ShowEnergy ();
+	}
 
-		myFood++;
+	public void AnswerRight () {
+		myEnergyCurrent += myEnergyGetFromRight;
+		if (myEnergyCurrent > myEnergyMax) {
+			myEnergyCurrent = myEnergyMax;
+		}
+		ShowEnergy ();
 	}
 
 	public void ShowEnergy () {
@@ -177,10 +186,7 @@ public class CS_Player : MonoBehaviour {
 			isDead = true;
 
 			CS_UI_Play.Instance.ShowEnd ();
-			CS_UI_Play.Instance.myTextAge.text = myAge.ToString ("#");
-			CS_UI_Play.Instance.myTextFoe.text = myFoe.ToString ("#");
-			CS_UI_Play.Instance.myTextFood.text = myFood.ToString ("#");
-			CS_UI_Play.Instance.myTextAccuracy.text = ((float)myFood / (myFoe + myFood) * 100).ToString ("#") + "%";
+			CS_UI_Play.Instance.SetFoodNFoe (myFood, myFoe);
 		}
 	}
 

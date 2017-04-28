@@ -55,6 +55,7 @@ public class CS_UI_Play_Breathing : MonoBehaviour {
 
 		if (myCurrentQuestion.myAnswer == g_answer) {
 			myBreathingAnimator.SetTrigger ("isRight");
+			CS_Player.Instance.AnswerRight ();
 		} else {
 			myBreathingAnimator.SetTrigger ("isWrong");
 		}

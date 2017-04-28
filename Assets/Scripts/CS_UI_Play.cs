@@ -29,10 +29,8 @@ public class CS_UI_Play : MonoBehaviour {
 	[SerializeField] GameObject UI_End;
 	[SerializeField] GameObject UI_Help;
 
-	public Text myTextAge;
 	public Text myTextFood;
 	public Text myTextFoe;
-	public Text myTextAccuracy;
 	// Use this for initialization
 	void Start () {
 		UI_End.SetActive (false);
@@ -51,10 +49,23 @@ public class CS_UI_Play : MonoBehaviour {
 
 	public void ShowHelp () {
 		UI_Help.SetActive (true);
+		UI_End.SetActive (false);
 	}
 
 	public void Replay () {
 		SceneManager.LoadScene (SceneManager.GetActiveScene ().buildIndex);
+	}
+
+	public void SetFoodNFoe (int g_food, int g_foe) {
+		if (g_food != 0) 
+			myTextFood.text = g_food.ToString ("#");
+		else 
+			myTextFood.text = "0";
+
+		if (g_foe != 0)
+			myTextFoe.text = g_foe.ToString ("#");
+		else 
+			myTextFoe.text = "0";
 	}
 
 	public void LoadMenu () {
