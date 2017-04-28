@@ -40,7 +40,6 @@ public class CS_Player : MonoBehaviour {
 	[SerializeField] float myEnergyLoseFromFoe = 20;
 	[SerializeField] float myEnergyGetFromFood = 10;
 	[SerializeField] float myEnergyGetFromRight = 20;
-	[SerializeField] RectTransform myEnergyDisplay;
 	private float myEnergyCurrent;
 
 	[SerializeField] float myAgeStart = 10;
@@ -102,7 +101,7 @@ public class CS_Player : MonoBehaviour {
 		}
 
 		UpdateEnergy ();
-		UpdateAge ();
+//		UpdateAge ();
 
 		UpdateBreathing ();
 	}
@@ -173,7 +172,7 @@ public class CS_Player : MonoBehaviour {
 	}
 
 	public void ShowEnergy () {
-		myEnergyDisplay.localScale = new Vector3 (myEnergyCurrent / myEnergyMax, 1, 1);
+		CS_UI_Play.Instance.ShowEnergy (myEnergyCurrent / myEnergyMax);
 	}
 
 //	public void ShowAge () {

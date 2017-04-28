@@ -28,6 +28,9 @@ public class CS_UI_Play : MonoBehaviour {
 	[SerializeField] GameObject UI_Breathing;
 	[SerializeField] GameObject UI_End;
 	[SerializeField] GameObject UI_Help;
+	[SerializeField] RectTransform myEnergyRectTransform;
+	[SerializeField] Image myEnergyImage;
+	[SerializeField] Gradient myEnergyColor;
 
 	public Text myTextFood;
 	public Text myTextFoe;
@@ -54,6 +57,11 @@ public class CS_UI_Play : MonoBehaviour {
 
 	public void Replay () {
 		SceneManager.LoadScene (SceneManager.GetActiveScene ().buildIndex);
+	}
+
+	public void ShowEnergy (float g_percent) {
+		myEnergyRectTransform.localScale = new Vector3 (g_percent, 1, 1);
+		myEnergyImage.color = myEnergyColor.Evaluate (g_percent);
 	}
 
 	public void SetFoodNFoe (int g_food, int g_foe) {
