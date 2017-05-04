@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 7b5d3fff4f2a64c41b2dfced29360293
+timeCreated: 1492785525
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: MRF Lemonberry Sans
+  fontNames:
+  - MRF Lemonberry Sans
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
