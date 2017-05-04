@@ -11,10 +11,13 @@ public class CS_Food : MonoBehaviour {
 
 	[SerializeField] Vector2 myMovementSpeedRange = Vector2.up;
 	[SerializeField] Type myType = Type.Food;
+	[SerializeField] Vector2 mySizeRange = new Vector2 (1, 1);
 
 //	// Use this for initialization
 	void Start () {
 		this.GetComponent<Animator> ().speed = Random.Range (myMovementSpeedRange.x, myMovementSpeedRange.y);
+		float t_size = Random.Range (mySizeRange.x, mySizeRange.y);
+		this.transform.localScale = new Vector3 (t_size * (Random.Range (0, 2) * 2 - 1), t_size, t_size);
 	}
 	
 	// Update is called once per frame
