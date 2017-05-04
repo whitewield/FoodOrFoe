@@ -102,8 +102,8 @@ Shader "Sprites/Fog"
 			fixed4 mySpriteFrag(v2f_fog IN) : SV_Target
 			{
 			    fixed4 c = SampleSpriteTexture (IN.texcoord) * IN.color;
-//			    if(c.a < 0.1)
-//			    	discard;
+			    if(c.a < 0.1)
+			    	discard;
 
 				UNITY_APPLY_FOG(IN.fogCoord, c); // Fog
 			    c.rgb *= c.a;
