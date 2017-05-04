@@ -28,8 +28,8 @@ public class CS_Canvas_Manager : MonoBehaviour {
 		// PanelManager.SetCharacterImage(images[0]);
 		PanelManager.SetButtonImage(Button_Image[0]);
 		PanelManager.SetText(Text_Collection[0]);
-		PanelManager.SetLevel("PlaySeaTurtle");
-		PlayCanvasManager.animalState = AnimalState.Manatee;
+		PanelManager.SetLevel("PlaySeal");
+		PlayCanvasManager.animalState = AnimalState.Seal;
 		TriggerMoveTask();
 	}
 	public void TriggerUIMove_Middle()
@@ -39,7 +39,7 @@ public class CS_Canvas_Manager : MonoBehaviour {
 		PanelManager.SetButtonImage(Button_Image[1]);
 		PanelManager.SetText(Text_Collection[1]);
 		PanelManager.SetLevel("PlaySeal");
-		PlayCanvasManager.animalState = AnimalState.Seal;
+		PlayCanvasManager.animalState = AnimalState.Manatee;
 		TriggerMoveTask();
 	}	
 	public void TriggerUIMove_Right()
