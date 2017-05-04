@@ -3,11 +3,10 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class CS_UI_PanelManager : MonoBehaviour {
 	public Button[] buttons{get; private set;}
-	[SerializeField] Image[] Images;
-	[SerializeField] Text[] Texts;
-	[SerializeField] int NextLoadScene;
-	[SerializeField] string NextLoadScene_Name;
-	void Start(){
+	[SerializeField] protected Image[] Images;
+	[SerializeField] protected Text[] Texts;
+	[SerializeField] protected CS_LevelLoader levelLoader;
+	protected void Start(){
 		buttons = GetComponentsInChildren<Button>();
 	}
 	public void TurnOnAllButton(){
@@ -25,13 +24,12 @@ public class CS_UI_PanelManager : MonoBehaviour {
 	public void SetCharacterImage(Sprite characterImage){Images[0].sprite = characterImage;}
 	// public void SetRealImage(Sprite realImage){Images[1].sprite = realImage;}
 	public void SetButtonImage(Sprite buttonImage){Images[1].sprite = buttonImage;}
+	public void SetImage(int index, Sprite _Image){Images[index].sprite = _Image;}
 	public void SetText(string text){Texts[0].text = text;}
-	public void SetLevel(int m_levelIndex){NextLoadScene = m_levelIndex;}
-	public void SetLevel(string m_levelName){NextLoadScene_Name = m_levelName;}
-	public void LoadScene(){
-		SceneManager.LoadScene(NextLoadScene);
+	public void SetLevel(int m_levelIndex){
+		levelLoader.setLevel(m_levelIndex);
 	}
-	public void LoadScene_Name(){
-		SceneManager.LoadScene(NextLoadScene_Name);
+	public void SetLevel(string m_levelName){
+		levelLoader.setLevel(m_levelName);
 	}
 }

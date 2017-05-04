@@ -8,6 +8,7 @@ public class CS_Canvas_Manager : MonoBehaviour {
 	public Sprite[] images;
 	public Sprite[] Button_Image;
 	public string[] Text_Collection;
+	private CS_UI_PlayCanvas_Panel_Manager PlayCanvasManager;
 	private List<Vector3> UI_MoveToPos_List = new List<Vector3>()
 	{
 		Vector3.zero,
@@ -17,7 +18,9 @@ public class CS_Canvas_Manager : MonoBehaviour {
 
 	void Awake()
 	{
+		PlayCanvasManager = GameObject.Find("PlayCanvas").GetComponent<CS_UI_PlayCanvas_Panel_Manager>();
 		PanelManager = GetComponentInChildren<CS_UI_PanelManager>();
+
 	}
 	public void TriggerUIMove_Left()
 	{
@@ -25,7 +28,8 @@ public class CS_Canvas_Manager : MonoBehaviour {
 		// PanelManager.SetCharacterImage(images[0]);
 		PanelManager.SetButtonImage(Button_Image[0]);
 		PanelManager.SetText(Text_Collection[0]);
-		PanelManager.SetLevel(1);
+		PanelManager.SetLevel("PlaySeaTurtle");
+		PlayCanvasManager.animalState = AnimalState.Manatee;
 		TriggerMoveTask();
 	}
 	public void TriggerUIMove_Middle()
@@ -34,7 +38,8 @@ public class CS_Canvas_Manager : MonoBehaviour {
 		// PanelManager.SetCharacterImage(images[1]);
 		PanelManager.SetButtonImage(Button_Image[1]);
 		PanelManager.SetText(Text_Collection[1]);
-		PanelManager.SetLevel(1);
+		PanelManager.SetLevel("PlaySeaTurtle");
+		PlayCanvasManager.animalState = AnimalState.Seal;
 		TriggerMoveTask();
 	}	
 	public void TriggerUIMove_Right()
@@ -43,7 +48,8 @@ public class CS_Canvas_Manager : MonoBehaviour {
 		// PanelManager.SetCharacterImage(images[2]);
 		PanelManager.SetButtonImage(Button_Image[2]);
 		PanelManager.SetText(Text_Collection[2]);
-		PanelManager.SetLevel(1);
+		PanelManager.SetLevel("PlaySeaTurtle");
+		PlayCanvasManager.animalState = AnimalState.Turtle;
 		TriggerMoveTask();
 	}
 	public void TriggerUIMove_Back()
@@ -79,6 +85,7 @@ public class CS_Canvas_Manager : MonoBehaviour {
 	}
 	public void OnBackClick()
 	{
+		Debug.Log("Back");
 		BackBottun_Event tempEvent = new BackBottun_Event();
 		EventManager.Instance.FireEvent(tempEvent);
 	}

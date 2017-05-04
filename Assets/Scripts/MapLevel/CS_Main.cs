@@ -9,27 +9,31 @@ public class CS_Main : MonoBehaviour {
 		AnimalMap,
 		PlayMenu
 	}
-	[SerializeField] bool ifPlay = false;
-	[SerializeField] Image menuSprite;
-	[SerializeField] Button playButton;
 	[SerializeField] Canvas animalCanvas;
+	private CS_LevelLoader levelLoader;
+	protected int LevelIndex;
 	// Update is called once per frame
-	void Update () {
-		if(ifPlay){
-			if(menuSprite.color.a < 1.0f){
-				menuSprite.color += new Color(0,0,0,0.1f);
-			}
-			else{
-				EventManager.Instance.ClearList();
-				playButton.enabled = true;
-				animalCanvas.gameObject.SetActive (false);
-			}
-		}
+	void Start(){
+		levelLoader = GetComponent<CS_LevelLoader>();
 	}
 	public void TurnOnPlayMenu(){
-		ifPlay = true;
+		InfoScreenEvent tempEvent = new InfoScreenEvent();
+		EventManager.Instance.FireEvent(tempEvent);
+	}
+	public void TurnOffSelectMenu(){
+
+	}
+	public void TurnOffPlayMenu(){
+
+	}
+	public void TurnOnSelectMenu(){
+
 	}
 	public void play_Level(){
-		SceneManager.LoadScene("PlaySeaTurtle");
+		EventManager.Instance.ClearList();
+		levelLoader.LoadLevel();
 	}
 }
+public class InfoScreenEvent: Event{
+
+} 

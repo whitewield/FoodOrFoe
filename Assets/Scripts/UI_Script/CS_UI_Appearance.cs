@@ -5,8 +5,8 @@ using UnityEngine.UI;
 using EasingFunc;
 
 public class CS_UI_Appearance : MonoBehaviour {
-	[SerializeField] Color endColor;
-	[SerializeField] Color originalColor;
+	[SerializeField] protected Color endColor;
+	[SerializeField] protected Color originalColor;
 	[SerializeField] float UI_Appear_Wait_Time;
 	protected Image imageComponent;
 	protected Text textComponent;
@@ -40,10 +40,12 @@ public class CS_UI_Appearance : MonoBehaviour {
 	//When selected one Animal, Do this
 	public void Appear_In(Event e)
 	{
+		
 		wait_Task wait = new wait_Task(UI_Appear_Wait_Time);
 		Debug.Log("Name:" + gameObject.name);
-		if(gameObject.name != "Text")
+		if(GetComponent<Image>())
 		{
+			GetComponent<Image>().raycastTarget = true;
 			colorTask_Image.ResetColor(endColor);
 			if(colorTask_Image.ifDetached)
 			{
@@ -51,8 +53,9 @@ public class CS_UI_Appearance : MonoBehaviour {
 				taskManager.AddTask(wait);
 			}
 		}
-		if(gameObject.name == "Text")
+		if(GetComponent<Text>())
 		{
+			GetComponent<Text>().raycastTarget = true;
 			colorTask_Text.ResetColor(endColor);
 			if(colorTask_Text.ifDetached)
 			{
@@ -63,16 +66,17 @@ public class CS_UI_Appearance : MonoBehaviour {
 	}
 
 	//When go back to the Animal SelectState, Do this
-	public virtual void Appear_Out(Event e)
-	{
+	public virtual void Appear_Out(Event e){
 		if(GetComponent<Image>())
 		{
+			GetComponent<Image>().raycastTarget = false;
 			colorTask_Image.ResetColor(originalColor);
 			if(colorTask_Image.ifDetached)
 				taskManager.AddTask(colorTask_Image);
 		}
 		if(GetComponent<Text>())
 		{
+			GetComponent<Text>().raycastTarget = false;
 			colorTask_Text.ResetColor(originalColor);
 			if(colorTask_Text.ifDetached)
 				taskManager.AddTask(colorTask_Text);
