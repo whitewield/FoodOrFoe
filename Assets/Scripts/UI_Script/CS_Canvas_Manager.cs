@@ -38,7 +38,7 @@ public class CS_Canvas_Manager : MonoBehaviour {
 		// PanelManager.SetCharacterImage(images[1]);
 		PanelManager.SetButtonImage(Button_Image[1]);
 		PanelManager.SetText(Text_Collection[1]);
-		PanelManager.SetLevel("PlaySeal");
+		PanelManager.SetLevel("PlayManatee");
 		PlayCanvasManager.animalState = AnimalState.Manatee;
 		TriggerMoveTask();
 	}	
