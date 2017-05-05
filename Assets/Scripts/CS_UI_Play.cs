@@ -24,7 +24,7 @@ public class CS_UI_Play : MonoBehaviour {
 		//		DontDestroyOnLoad(this.gameObject);
 	}
 	//========================================================================
-
+	[SerializeField] GameObject UI_Start;
 	[SerializeField] GameObject UI_Breathing;
 	[SerializeField] GameObject UI_End;
 	[SerializeField] GameObject UI_Help;
@@ -36,9 +36,16 @@ public class CS_UI_Play : MonoBehaviour {
 	public Text myTextFoe;
 	// Use this for initialization
 	void Start () {
+		Time.timeScale = 0;
+		UI_Start.SetActive (true);
 		UI_End.SetActive (false);
 		UI_Help.SetActive (false);
 		UI_Breathing.SetActive (false);
+	}
+
+	public void HideStart () {
+		UI_Start.SetActive (false);
+		Time.timeScale = 1;
 	}
 	
 //	// Update is called once per frame
