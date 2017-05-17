@@ -32,8 +32,11 @@ public class CS_UI_Play : MonoBehaviour {
 	[SerializeField] Image myEnergyImage;
 	[SerializeField] Gradient myEnergyColor;
 
+
 	public Text myTextFood;
 	public Text myTextFoe;
+
+	[SerializeField] AudioClip mySFX;
 	// Use this for initialization
 	void Start () {
 		Time.timeScale = 0;
@@ -46,6 +49,7 @@ public class CS_UI_Play : MonoBehaviour {
 	public void HideStart () {
 		UI_Start.SetActive (false);
 		Time.timeScale = 1;
+		CS_AudioManager.Instance.PlaySFX (mySFX);
 	}
 	
 //	// Update is called once per frame
@@ -55,15 +59,18 @@ public class CS_UI_Play : MonoBehaviour {
 
 	public void ShowEnd () {
 		UI_End.SetActive (true);
+		CS_AudioManager.Instance.PlaySFX (mySFX);
 	}
 
 	public void ShowHelp () {
 		UI_Help.SetActive (true);
 		UI_End.SetActive (false);
+		CS_AudioManager.Instance.PlaySFX (mySFX);
 	}
 
 	public void Replay () {
 		SceneManager.LoadScene (SceneManager.GetActiveScene ().buildIndex);
+		CS_AudioManager.Instance.PlaySFX (mySFX);
 	}
 
 	public void ShowEnergy (float g_percent) {
@@ -86,6 +93,7 @@ public class CS_UI_Play : MonoBehaviour {
 	public void LoadMenu () {
 		Debug.Log ("Menu");
 		SceneManager.LoadScene ("Map");
+		CS_AudioManager.Instance.PlaySFX (mySFX);
 	}
 }
 

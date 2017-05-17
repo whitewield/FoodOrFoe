@@ -60,6 +60,9 @@ public class CS_Player : MonoBehaviour {
 	private float myBreathingTimer = 0;
 	private bool isBreathing = false;
 
+	[SerializeField] AudioClip mySFX_Food;
+	[SerializeField] AudioClip mySFX_Foe;
+
 	// Use this for initialization
 	void Start () {
 		myEnergyCurrent = myEnergyStart;
@@ -149,6 +152,8 @@ public class CS_Player : MonoBehaviour {
 		myEnergyCurrent -= myEnergyLoseFromFoe;
 		CheckIsDead ();
 		ShowEnergy ();
+
+		CS_AudioManager.Instance.PlaySFX (mySFX_Foe);
 	}
 
 	public void EatFood () {
@@ -161,6 +166,8 @@ public class CS_Player : MonoBehaviour {
 			myEnergyCurrent = myEnergyMax;
 		}
 		ShowEnergy ();
+
+		CS_AudioManager.Instance.PlaySFX (mySFX_Food);
 	}
 
 	public void AnswerRight () {
@@ -169,6 +176,8 @@ public class CS_Player : MonoBehaviour {
 			myEnergyCurrent = myEnergyMax;
 		}
 		ShowEnergy ();
+
+		CS_AudioManager.Instance.PlaySFX (mySFX_Food);
 	}
 
 	public void ShowEnergy () {
