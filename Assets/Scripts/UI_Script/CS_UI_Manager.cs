@@ -4,6 +4,7 @@ using UnityEngine.UI;
 public class CS_UI_Manager : MonoBehaviour {
 	private Task_Manager taskManager = new Task_Manager();
 	private CS_UI_MoveTask UI_Move_Task;
+	[SerializeField] protected AudioClip ClickSound;
 	void Start () {
 	}
 	void Update()
@@ -20,5 +21,8 @@ public class CS_UI_Manager : MonoBehaviour {
 		// }
 		UI_Move_Task = new CS_UI_MoveTask(UI_MoveToPos, GetComponent<RectTransform>());
 		taskManager.AddTask(UI_Move_Task);
+	}
+	public void PlayClickSound(){
+		CS_AudioManager.Instance.PlaySFX(ClickSound);
 	}
 }
